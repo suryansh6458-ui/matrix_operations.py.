@@ -1,0 +1,278 @@
+
+# Matrix Operations Toolkit
+
+print("=" * 40)
+print("      MATRIX OPERATIONS TOOLKIT")
+print("=" * 40)
+
+while True:
+
+    print("\n1. Matrix Addition")
+    print("2. Matrix Subtraction")
+    print("3. Matrix Multiplication")
+    print("4. Matrix Transpose")
+    print("5. Exit")
+
+    choice = input("\nEnter your choice: ")
+
+    if choice == "1" or choice == "2":
+
+        try:
+            rows = int(input("Enter number of rows: "))
+            columns = int(input("Enter number of columns: "))
+
+            if rows <= 0 or columns <= 0:
+                print("Dimensions must be positive.")
+
+                continue
+
+            matrix_a = []
+            matrix_b = []
+
+            print("\nEnter Matrix A:")
+
+            for i in range(rows):
+
+                row = []
+
+                for j in range(columns):
+
+                    value = int(
+                        input(
+                            f"Enter element [{i}][{j}]: "
+                        )
+                    )
+
+                    row.append(value)
+
+                matrix_a.append(row)
+
+            print("\nEnter Matrix B:")
+
+            for i in range(rows):
+
+                row = []
+
+                for j in range(columns):
+
+                    value = int(
+                        input(
+                            f"Enter element [{i}][{j}]: "
+                        )
+                    )
+
+                    row.append(value)
+
+                matrix_b.append(row)
+
+            result = []
+
+            for i in range(rows):
+
+                row = []
+
+                for j in range(columns):
+
+                    if choice == "1":
+
+                        value = (
+                            matrix_a[i][j]
+                            + matrix_b[i][j]
+                        )
+
+                    else:
+
+                        value = (
+                            matrix_a[i][j]
+                            - matrix_b[i][j]
+                        )
+
+                    row.append(value)
+
+                result.append(row)
+
+            print("\nResult Matrix:")
+
+            for row in result:
+
+                print(row)
+
+        except ValueError:
+
+            print("Enter valid integer values.")
+
+    elif choice == "3":
+
+        try:
+            rows_a = int(
+                input("Enter rows of Matrix A: ")
+            )
+
+            columns_a = int(
+                input("Enter columns of Matrix A: ")
+            )
+
+            rows_b = int(
+                input("Enter rows of Matrix B: ")
+            )
+
+            columns_b = int(
+                input("Enter columns of Matrix B: ")
+            )
+
+            if (
+                rows_a <= 0
+                or columns_a <= 0
+                or rows_b <= 0
+                or columns_b <= 0
+            ):
+
+                print("Dimensions must be positive.")
+
+                continue
+
+            if columns_a != rows_b:
+
+                print(
+                    "Multiplication is not possible."
+                )
+
+                print(
+                    "Columns of A must equal rows of B."
+                )
+
+                continue
+
+            matrix_a = []
+            matrix_b = []
+
+            print("\nEnter Matrix A:")
+
+            for i in range(rows_a):
+
+                row = []
+
+                for j in range(columns_a):
+
+                    value = int(
+                        input(
+                            f"Enter element [{i}][{j}]: "
+                        )
+                    )
+
+                    row.append(value)
+
+                matrix_a.append(row)
+
+            print("\nEnter Matrix B:")
+
+            for i in range(rows_b):
+
+                row = []
+
+                for j in range(columns_b):
+
+                    value = int(
+                        input(
+                            f"Enter element [{i}][{j}]: "
+                        )
+                    )
+
+                    row.append(value)
+
+                matrix_b.append(row)
+
+            result = []
+
+            for i in range(rows_a):
+
+                row = []
+
+                for j in range(columns_b):
+
+                    total = 0
+
+                    for k in range(columns_a):
+
+                        total += (
+                            matrix_a[i][k]
+                            * matrix_b[k][j]
+                        )
+
+                    row.append(total)
+
+                result.append(row)
+
+            print("\nMultiplication Result:")
+
+            for row in result:
+
+                print(row)
+
+        except ValueError:
+
+            print("Enter valid integer values.")
+
+    elif choice == "4":
+
+        try:
+            rows = int(input("Enter number of rows: "))
+            columns = int(input("Enter number of columns: "))
+
+            if rows <= 0 or columns <= 0:
+
+                print("Dimensions must be positive.")
+
+                continue
+
+            matrix = []
+
+            print("\nEnter Matrix:")
+
+            for i in range(rows):
+
+                row = []
+
+                for j in range(columns):
+
+                    value = int(
+                        input(
+                            f"Enter element [{i}][{j}]: "
+                        )
+                    )
+
+                    row.append(value)
+
+                matrix.append(row)
+
+            transpose = []
+
+            for j in range(columns):
+
+                row = []
+
+                for i in range(rows):
+
+                    row.append(matrix[i][j])
+
+                transpose.append(row)
+
+            print("\nTranspose Matrix:")
+
+            for row in transpose:
+
+                print(row)
+
+        except ValueError:
+
+            print("Enter valid integer values.")
+
+    elif choice == "5":
+
+        print("Exiting Matrix Operations Toolkit.")
+
+        break
+
+    else:
+
+        print("Invalid choice.")
